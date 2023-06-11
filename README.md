@@ -1,3 +1,78 @@
+# Building Instructions
+
+## Variables
+
+Change `<mach2 repo directory>` into the Directory where you cloned mach2. Example: `C:\Users\Test1\source\repos\mach2`
+
+## Visual Studio 2022 Components installed:
+
+Desktop Development with C++
+
+Windows Universal CRT SDK
+
+Windows 10 SDK (10.0.19041.0)
+
+Windows Universal C Runtime
+
+WIndows Driver Kit (10.0.22621.382)
+
+## VCPKG Commands:
+
+vcpkg Update Baseline: `vcpkg.exe x-update-baseline --add-initial-baseline`
+
+vcpkg install: `vcpkg.exe install --feature-flags=manifests,binarycaching --triplet "x64-windows"`
+
+## Fix Microsoft.Taef Dependency being missing
+
+#### Tools -> Options -> NuGet Package Manager -> Package Source -> New Package Source (Plus Button):
+
+`https://pkgs.dev.azure.com/ms/ProjectReunion/_packaging/ProjectReunion-Dependencies/nuget/v3/index.json`
+
+(Required because the Microsoft.Taef Dependency with Version 10.58.210222006-develop is otherwise missing)
+
+#### Tools -> NuGet Package Manager -> Package Manager Console:
+
+Press on the "Restore" Button, otherwise use `Install-Package Microsoft.Taef -version 10.58.210222006-develop`
+
+## Include capstone.dll in the Output Directory
+
+#### mach2-cli -> Build Events -> Post-Build Event -> Command Line:
+
+```
+copy /y "$(ProjectDir)features.txt" "$(OutDir)"
+copy /y "$(CurrentVsInstallRoot)\DIA SDK\bin\amd64\msdia140.dll" "$(OutDir)"
+copy /y "$(ProjectDir)vcpkg_installed\x64-windows\bin\capstone.dll" "$(OutDir)"
+```
+
+## Building
+
+#### Solution -> Retarget Solution: Windows SDK Version: `10.0.19041.0`
+
+#### mach2-cli -> Properties -> C/C++ -> General -> Additional Include Directories: 
+
+`C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt;<mach2 repo directory>\vcpkg_installed\x64-windows\include`
+
+#### mach2-cli -> Properties -> Linker -> Input -> Additional Dependencies: 
+
+`mach2-core.lib;<mach2 repo directory>\vcpkg_installed\x64-windows\lib\capstone.lib;rpcrt4.lib;dbghelp.lib;comsuppw.lib;pathcch.lib;diaguids.lib;ntdll.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.19041.0\ucrt\x64\libucrtd.lib;%(AdditionalDependencies)`
+
+#### mach2-core -> Properties -> C/C++ -> General -> Additional Include Directories: 
+
+`C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt;<mach2 repo directory>\vcpkg_installed\x64-windows\include`
+
+## Changes made to Source Code
+
+#### mach2-cli -> mach2.rc: Version: VS_VERSION_INFO:
+
+| Key | Value |
+| --- | --- |
+| FILEVERSION | 0, 8, 0, 0 |
+| PRODUCTVERSION | 0, 8, 0, 0 |
+| FileVersion | 0.8.0.0 |
+| ProductVersion | Commit e20cf4d |
+
+---
+
 # Mach2
 
 ![](./gfx/usage.png)

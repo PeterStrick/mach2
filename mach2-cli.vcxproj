@@ -30,7 +30,7 @@
     <ProjectGuid>{6279929A-C965-460A-B53A-8388D2BE47A0}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>mach2</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -117,6 +117,7 @@
     <IntDir>$(ProjectDir)bin\$(PlatformTarget)\$(ProjectName)\int\</IntDir>
     <PostBuildEventUseInBuild>true</PostBuildEventUseInBuild>
     <TargetName>mach2</TargetName>
+    <CopyLocalProjectReference>true</CopyLocalProjectReference>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <PostBuildEventUseInBuild>true</PostBuildEventUseInBuild>
@@ -206,17 +207,17 @@ copy /y "$(CurrentVsInstallRoot)\DIA SDK\bin\msdia140.dll" "$(OutDir)"</Command>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>
-      </AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt;C:\Users\Peter\source\repos\mach2\vcpkg_installed\vcpkg\pkgs\cli11_x64-windows\include\;C:\Users\Peter\source\repos\mach2\vcpkg_installed\vcpkg\pkgs\capstone_x64-windows\include\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>mach2-core.lib;capstone.lib;rpcrt4.lib;dbghelp.lib;comsuppw.lib;pathcch.lib;diaguids.lib;ntdll.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mach2-core.lib;C:\Users\Peter\source\repos\mach2\vcpkg_installed\vcpkg\pkgs\capstone_x64-windows\lib\capstone.lib;rpcrt4.lib;dbghelp.lib;comsuppw.lib;pathcch.lib;diaguids.lib;ntdll.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.19041.0\ucrt\x64\libucrtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>copy /y "$(ProjectDir)features.txt" "$(OutDir)"
-copy /y "$(CurrentVsInstallRoot)\DIA SDK\bin\amd64\msdia140.dll" "$(OutDir)"</Command>
+copy /y "$(CurrentVsInstallRoot)\DIA SDK\bin\amd64\msdia140.dll" "$(OutDir)"
+copy /y "$(ProjectDir)vcpkg_installed\x64-windows\bin\capstone.dll" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
@@ -278,15 +279,14 @@ copy /y "$(CurrentVsInstallRoot)\DIA SDK\bin\msdia140.dll" "$(OutDir)"</Command>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>
-      </AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>mach2-core.lib;capstone.lib;rpcrt4.lib;dbghelp.lib;comsuppw.lib;pathcch.lib;diaguids.lib;ntdll.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mach2-core.lib;lib\capstone.lib;rpcrt4.lib;dbghelp.lib;comsuppw.lib;pathcch.lib;diaguids.lib;ntdll.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.19041.0\ucrt\x64\libucrtd.lib;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.19041.0\ucrt\x64\libucrt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>copy /y "$(ProjectDir)features.txt" "$(OutDir)"

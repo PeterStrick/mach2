@@ -30,7 +30,7 @@
     <ProjectGuid>{036650F8-9EFB-40AD-BE88-E2E8C5E2BD57}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>mach2</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -212,8 +212,7 @@ copy /y "$(CurrentVsInstallRoot)\DIA SDK\bin\msdia140.dll" "$(OutDir)"</Command>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>
-      </AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt;C:\Users\Peter\source\repos\mach2\vcpkg_installed\vcpkg\pkgs\cli11_x64-windows\include\;C:\Users\Peter\source\repos\mach2\vcpkg_installed\vcpkg\pkgs\capstone_x64-windows\include\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -284,8 +283,7 @@ copy /y "$(CurrentVsInstallRoot)\DIA SDK\bin\msdia140.dll" "$(OutDir)"</Command>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>
-      </AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

@@ -17,6 +17,7 @@
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
@@ -50,8 +51,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 0,2,0,0
- PRODUCTVERSION 0,2,0,0
+ FILEVERSION 0,8,0,0
+ PRODUCTVERSION 0,8,0,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -67,12 +68,12 @@ BEGIN
         BLOCK "040904b0"
         BEGIN
             VALUE "FileDescription", "Feature Control Multi-tool"
-            VALUE "FileVersion", "0.3.0.0"
+            VALUE "FileVersion", "0.8.0.0"
             VALUE "InternalName", "mach2.exe"
             VALUE "LegalCopyright", "Copyright (c) Rafael Rivera and Contributors"
             VALUE "OriginalFilename", "mach2.exe"
             VALUE "ProductName", "mach2"
-            VALUE "ProductVersion", "0.3.0.0"
+            VALUE "ProductVersion", "Commit e20cf4d"
         END
     END
     BLOCK "VarFileInfo"

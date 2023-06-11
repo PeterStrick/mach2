@@ -60,6 +60,14 @@ copy /y "$(ProjectDir)vcpkg_installed\x64-windows\bin\capstone.dll" "$(OutDir)"
 
 `C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt;<mach2 repo directory>\vcpkg_installed\x64-windows\include`
 
+#### mach2-test -> Properties -> C/C++ -> General -> Additional Include Directories: 
+
+`C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt;<mach2 repo directory>\vcpkg_installed\x64-windows\include`
+
+#### mach2-test -> Properties -> Linker -> Input -> Additional Dependencies: 
+
+`mach2-core.lib;<mach2 repo directory>\vcpkg_installed\x64-windows\lib\capstone.lib;rpcrt4.lib;dbghelp.lib;comsuppw.lib;pathcch.lib;diaguids.lib;ntdll.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.19041.0\ucrt\x64\libucrtd.lib;%(AdditionalDependencies)`
+
 ## Changes made to Source Code
 
 #### mach2-cli -> mach2.rc: Version: VS_VERSION_INFO:
